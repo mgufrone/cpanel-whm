@@ -42,3 +42,5 @@ For example, if you are trying to get some list of accounts, you can run this.
 
 		return $list_accounts;
 	});
+
+For more information you can go to this links http://docs.cpanel.net/twiki/bin/view/SoftwareDevelopmentKit/XmlApi
