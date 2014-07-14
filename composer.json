@@ -1,6 +1,8 @@
 {
     "name": "gufy/cpanel-whm",
-    "description": "",
+    "description": "Laravel CPanel/WHM API Package.",
+    "keywords": ["framework", "laravel","CPanel","WHM","CPanel API"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Mochamad Gufron",
