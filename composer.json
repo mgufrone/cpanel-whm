@@ -1,0 +1,24 @@
+{
+    "name": "gufy/cpanel-whm",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mochamad Gufron",
+            "email": "mgufronefendi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "guzzlehttp/guzzle": "~4"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Gufy\\CpanelWhm\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
