@@ -20,5 +20,8 @@
             "Gufy\\CpanelWhm\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "orchestra/testbench": "2.2.*"
+    }
 }

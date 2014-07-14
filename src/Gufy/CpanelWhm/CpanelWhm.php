@@ -14,7 +14,7 @@ class CpanelWhm {
 		$headers = [];
 
 		$username = \Config::get('cpanel-whm::username');
-		$auth_type = \Config::get('cpanel-whm::auth_type');
+		$auth_type = \Config::get('cpanel-whm::auth_type', 'hash');
 		
 		if('hash' == $auth_type)
 			$headers['Authorization'] = 'WHM '.$username.':'. preg_replace("'(\r|\n)'","",\Config::get('cpanel-whm::auth'));
