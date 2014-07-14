@@ -24,8 +24,9 @@ class CpanelWhm {
 		$host = \Config::get('cpanel-whm::host');
 		$response = \GuzzleHttp\post($host.'/json-api/'.$action, [
 		    'headers' => $headers,
-		    'body'    => $arguments,
+		    // 'body'    => $arguments[0],
 		    'verify'  => false,
+		    'query'	  => $arguments
 
 		]);
 		return $response->json();
