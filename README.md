@@ -1,5 +1,4 @@
 # Laravel CPanel WHM Package
--------------------------------
 
 ## Installation Guide
 
