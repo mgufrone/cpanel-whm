@@ -1,11 +1,11 @@
-# Laravel CPanel WHM Package
+## Laravel CPanel WHM Package
 
-## Contents
+### Contents
 - [Installation Guide](#installation-guide)
 - [Configuration](#configuration)
 - [Usage](#usage)
 
-## Installation Guide
+### Installation Guide
 
 To install this package, you can run this code via your terminal
 ```shell
@@ -26,7 +26,7 @@ After install it, you have to add this line on your `app/config/app.php` on Serv
 
 It will automatically set an alias 'CpanelWhm' as Facade Accessor.
 
-## Configuration
+### Configuration
 
 In this package, it only using hash as its authentication. It's the safer way than using your root plain password. First, run this command
 ```shell
@@ -34,7 +34,7 @@ In this package, it only using hash as its authentication. It's the safer way th
 ```
 It will generate new file at `app/config/packages/gufy/cpanel-whm/config.php`. Edit necessary lines.
 
-## Usage
+### Usage
 
 For example, if you are trying to get some list of accounts, you can run this.
 ```php
