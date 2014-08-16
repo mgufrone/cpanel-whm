@@ -32,6 +32,15 @@ class CpanelWhmServiceProvider extends ServiceProvider {
 		$this->app['cpanel-whm'] = $this->app->share(function(){
 			return new CpanelWhm;
 		});
+		$this->app->booting(function(){
+      $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+      $aliases = \Config::get('app.aliases');
+
+      // Alias the Datatable package
+      if (empty($aliases['CpanelWhm'])) {
+          $loader->alias('CpanelWhm', 'Gufy\CpanelWhm\Facades\CpanelWhm');
+			}
+		});
 	}
 
 	/**
