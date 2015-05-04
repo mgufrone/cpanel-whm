@@ -18,7 +18,7 @@ class CpanelWhmServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('gufy/cpanel-whm');
+		// $this->package('gufy/cpanel-whm');
 	}
 
 	/**
@@ -32,6 +32,9 @@ class CpanelWhmServiceProvider extends ServiceProvider {
 		$this->app['cpanel-whm'] = $this->app->share(function(){
 			return new CpanelWhm;
 		});
+		$this->publishes([
+			dirname(__FILE__).'/../../config/config.php' => config_path('cpanel-whm.php')
+		]);
 		$this->app->booting(function(){
       $loader = \Illuminate\Foundation\AliasLoader::getInstance();
       $aliases = config('app.aliases');

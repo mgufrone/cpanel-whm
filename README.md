@@ -5,6 +5,10 @@
 - [Configuration](#configuration)
 - [Usage](#usage)
 
+### IMPORTANT NOTE
+
+If you are Laravel 4 user, please use v1.0.1 version instead.
+
 ### Installation Guide
 
 To install this package, you can run this code via your terminal
@@ -30,9 +34,9 @@ It will automatically set an alias 'CpanelWhm' as Facade Accessor.
 
 In this package, it only using hash as its authentication. It's the safer way than using your root plain password. First, run this command
 ```shell
-	php artisan config:publish gufy/cpanel-whm
+	php artisan vendor:publish gufy/cpanel-whm
 ```
-It will generate new file at `app/config/packages/gufy/cpanel-whm/config.php`. Edit necessary lines.
+It will generate new file at `config/cpanel-whm.php`. Edit necessary lines.
 
 ### Usage
 

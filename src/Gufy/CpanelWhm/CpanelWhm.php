@@ -30,11 +30,11 @@ class CpanelWhm  extends Cpanel
 	protected function runQuery($action, $arguments)
 	{
 		$this->setAuthorization(
-			\Config::get('cpanel-whm::username'),
-			\Config::get('cpanel-whm::auth')
+			config('cpanel-whm.username'),
+			config('cpanel-whm.auth')
 		)
-		->setHost(\Config::get('cpanel-whm::host'))
-		->setAuthType(\Config::get('cpanel-whm::auth_type', 'hash'));
+		->setHost(config('cpanel-whm.host'))
+		->setAuthType(config('cpanel-whm.auth_type', 'hash'));
 
 		return parent::runQuery($action, $arguments);
 	}
