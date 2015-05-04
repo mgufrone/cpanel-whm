@@ -34,7 +34,7 @@ class CpanelWhmServiceProvider extends ServiceProvider {
 		});
 		$this->app->booting(function(){
       $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-      $aliases = \Config::get('app.aliases');
+      $aliases = config('app.aliases');
 
       // Alias the Datatable package
       if (empty($aliases['CpanelWhm'])) {
