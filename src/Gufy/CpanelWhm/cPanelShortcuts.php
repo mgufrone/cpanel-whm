@@ -72,16 +72,28 @@ trait cPanelShortcuts {
     {
         list($account, $domain) = $this->split_email($email);
 
-        return $this->cpanel('Email', 'addpop', $username, [
-            'domain' => $domain,
-            'email' => $account,
-            'password' => $password,
-        ]);
+        return $this->emailAcction('addpop', $username, $password, $domain, $account);
+    }
+
+    /**
+     * Change the password for an email account in cPanel
+     * 
+     * @param $username
+     * @param $email
+     * @param $password
+     * @return mixed
+     * @throws \Exception
+     */
+    public function changeEmailPassword($username, $email, $password)
+    {
+        list($account, $domain) = $this->split_email($email);
+
+        return $this->emailAcction('passwdpop', $username, $password, $domain, $account);
     }
 
     /**
      * Split an email address into two items, username and host.
-     * 
+     *
      * @param $email
      * @return array
      * @throws \Exception
@@ -94,5 +106,24 @@ trait cPanelShortcuts {
         }
 
         return $email_parts;
+    }
+
+    /**
+     * Perform an email action
+     *
+     * @param $action
+     * @param $username
+     * @param $password
+     * @param $domain
+     * @param $account
+     * @return mixed
+     */
+    private function emailAcction($action, $username, $password, $domain, $account)
+    {
+        return $this->cpanel('Email', $action, $username, [
+            'domain' => $domain,
+            'email' => $account,
+            'password' => $password,
+        ]);
     }
 }
