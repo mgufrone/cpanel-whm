@@ -41,8 +41,37 @@ class CpanelWhm extends Cpanel
     {
         $this->username = config('cpanel-whm.username');
         $this->password = config('cpanel-whm.auth');
-        $this->hostName = config('cpanel-whm.auth');
+        $this->hostName = config('cpanel-whm.host');
         $this->authType = config('cpanel-whm.auth_type', 'hash');
+    }
+
+    /**
+     * Create a new cPanel object
+     *
+     * @param $username
+     * @param $password
+     * @param null $hostname
+     * @return static
+     */
+    public function get($username, $password, $hostname = null)
+    {
+        $cpanel = new static;
+
+        if (empty($username)) {
+            $cpanel->username = config('cpanel-whm.username');
+        }
+
+        if (empty($password)) {
+            $cpanel->password = config('cpanel-whm.auth');
+        }
+
+        if (empty($hostname)) {
+            $cpanel->hostName = config('cpanel-whm.host');
+        }
+
+        $cpanel->authType = config('cpanel-whm.auth_type', 'hash');
+
+        return $cpanel;
     }
 
     /**
