@@ -16,6 +16,7 @@ use Gufy\CpanelPhp\Cpanel;
  */
 class CpanelWhm extends Cpanel
 {
+    use cPanelShortcuts;
 
     /**
      * @var string cPanel/WHM username
