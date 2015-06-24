@@ -72,12 +72,12 @@ trait cPanelShortcuts {
     {
         list($account, $domain) = $this->split_email($email);
 
-        return $this->emailAcction('addpop', $username, $password, $domain, $account);
+        return $this->emailAction('addpop', $username, $password, $domain, $account);
     }
 
     /**
      * Change the password for an email account in cPanel
-     * 
+     *
      * @param $username
      * @param $email
      * @param $password
@@ -88,7 +88,7 @@ trait cPanelShortcuts {
     {
         list($account, $domain) = $this->split_email($email);
 
-        return $this->emailAcction('passwdpop', $username, $password, $domain, $account);
+        return $this->emailAction('passwdpop', $username, $password, $domain, $account);
     }
 
     /**
@@ -118,7 +118,7 @@ trait cPanelShortcuts {
      * @param $account
      * @return mixed
      */
-    private function emailAcction($action, $username, $password, $domain, $account)
+    private function emailAction($action, $username, $password, $domain, $account)
     {
         return $this->cpanel('Email', $action, $username, [
             'domain' => $domain,
