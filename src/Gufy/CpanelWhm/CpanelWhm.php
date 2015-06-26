@@ -49,12 +49,12 @@ class CpanelWhm extends Cpanel
     /**
      * Create a new cPanel object
      *
-     * @param $username
-     * @param $password
-     * @param null $hostname
+     * @param string|null $username
+     * @param string|null $password
+     * @param string|null $hostname
      * @return static
      */
-    public function get($username, $password, $hostname = null)
+    public function get($username = null, $password = null, $hostname = null)
     {
         $cpanel = new static;
 
