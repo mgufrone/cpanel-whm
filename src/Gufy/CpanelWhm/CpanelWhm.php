@@ -81,6 +81,29 @@ class CpanelWhm extends Cpanel
         return $this;
     }
 
+
+    /**
+     * Create a new cPanel object
+     *
+     * @param $username
+     * @param $password
+     * @param null $hostname
+     * @return static
+     */
+    public function get($username, $password, $hostname = null)
+    {
+        $cpanel = new static;
+
+        $host = $hostname;
+        if (empty($hostname)) {
+            $host = config('cpanel-whm.host');
+        }
+
+        $cpanel->setAuthenticationDetails($username, $password, $host);
+
+        return $cpanel;
+    }
+
     /**
      * This method override its parent method 'runQuery()'
      *
