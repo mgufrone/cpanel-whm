@@ -30,7 +30,7 @@ class CpanelWhmServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app['cpanel-whm'] = $this->app->share(function () {
+        $this->app->singleton('cpanel-whm', function(){
             return new CpanelWhm;
         });
 
