@@ -40,12 +40,53 @@ class CpanelWhm extends Cpanel
     /**
      * Class constructor.
      */
-    public function __construct()
+    public function __construct($server_key = false)
     {
-        $this->username = config('cpanel-whm.username');
-        $this->password = config('cpanel-whm.auth');
-        $this->hostName = config('cpanel-whm.host');
-        $this->authType = config('cpanel-whm.auth_type', 'hash');
+        if(!$this->setConfig($server_key)){
+            $error = $server_key ? 'Error, the specified server could not be found' : 'Error, no servers have been stored';
+            abort(500, $error);
+        }
+    }
+
+    /**
+     * Set the config settings
+     *
+     * @param $server_key
+     * @return bool
+     */
+    public function setConfig($server_key)
+    {
+        $server = $this->fetchConfig($server_key);
+        if(!$server) return false;
+        $this->username = $server['username'];
+        $this->password = $server['auth'];
+        $this->hostName = $server['host'];
+        $this->authType = !empty($server['auth_type']) ? $server['auth_type'] : 'hash';
+        //$this->authType = $server['auth_type'] ?? 'hash'; // PHP 7+
+        return true;
+    }
+
+    /**
+     * Fetch the config settings with fallbacks
+     *
+     * @param $server_key
+     * @return bool|mixed
+     */
+    public function fetchConfig($server_key)
+    {
+        $servers = config('cpanel-whm.servers');
+        if($server_key) {
+            // If has server key : Get that one
+            if(empty($servers[$server_key])) return false; // Validate
+            $server = $servers[$server_key];
+        } elseif(!empty($servers)) {
+            // No server key? cool get the first one
+            $server = reset($servers);
+        } else {
+            // Legacy config settings
+            $server = config('cpanel-whm');
+        }
+        return $server;
     }
 
     /**
