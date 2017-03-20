@@ -1,7 +1,8 @@
 <?php 
 return [
     'servers' => [
-        [
+        // Array key not necessary unless you have multiple servers
+        'example1' => [
             /*
             |--------------------------------------------------------------------------
             | Host of your server
@@ -10,7 +11,7 @@ return [
             | Please provide this by its full URL including its protocol and its port
             |
             */
-            'host'=>'https://127.0.0.1:2087',
+            'host' => 'https://127.0.0.1:2087',
 
             /*
             |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ return [
             | Copy and paste all of the string
             |
             */
-            'auth'=>'your_long_string_hash_key',
+            'auth' => 'your_long_string_hash_key',
 
             /*
             |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ return [
             | External API which is provided by CPanel/WHM
             |
             */
-            'username'=>'root',
+            'username' => 'root',
         ],
         // More Servers can be listed here as a new array
     ]

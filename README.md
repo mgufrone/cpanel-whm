@@ -50,4 +50,21 @@ For example, if you are trying to get some list of accounts, you can run this.
 		return $list_accounts;
 	});
 ```
+
+
+### Multiple Servers
+
+If you have multiple servers saved in your config file, you can access them directly using the CpanelWhm::server('arrayKey') function.
+
+Example:
+```php
+	<?php
+
+	Route::get('list-accounts',function(){
+		$list_accounts = CpanelWhm::server('example1')->listaccts();
+
+		return $list_accounts;
+	});
+```
+
 For more information you can go to this links [Guide to Cpanel API 2](https://documentation.cpanel.net/display/SDK/Guide+to+cPanel+API+2)

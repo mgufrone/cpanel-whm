@@ -49,6 +49,17 @@ class CpanelWhm extends Cpanel
     }
 
     /**
+     * Helper function to select server
+     *
+     * @param $server_key
+     * @return CpanelWhm
+     */
+    public static function server($server_key)
+    {
+        return new self($server_key);
+    }
+
+    /**
      * Set the config settings
      *
      * @param $server_key
