@@ -114,6 +114,16 @@ class CpanelWhm extends Cpanel
     }
 
     /**
+     * Fetch the current hostname
+     *
+     * @return string
+     */
+    public function getHostname()
+    {
+        return $this->hostName;
+    }
+
+    /**
      * Set cPanel username and password.
      *
      * @param string $username
