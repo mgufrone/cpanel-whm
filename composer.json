@@ -22,5 +22,12 @@
             "Gufy\\CpanelWhm\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Gufy\\CpanelWhm\\CpanelWhmServiceProvider"
+          ]
+        }
+    },
     "minimum-stability": "stable"
 }
