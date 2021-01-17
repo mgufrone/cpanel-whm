@@ -39,12 +39,19 @@ class CpanelWhm extends Cpanel
 
     /**
      * Class constructor.
+     * @param string|array $server
      */
-    public function __construct($server_key = false)
+    public function __construct($server = [])
     {
-        if(!$this->setConfig($server_key)){
-            $error = $server_key ? 'Error, the specified server could not be found' : 'Error, no servers have been stored';
-            abort(500, $error);
+        if (is_string($server)) {
+            $server = $this->fetchConfig($server);
+            if (empty($server)) {
+                $error = 'Error, no servers available in the config.';
+                throw new \InvalidArgumentException($error);
+            }
+        }
+        if ($server) {
+            $this->setConfig($server);
         }
     }
 
@@ -62,18 +69,21 @@ class CpanelWhm extends Cpanel
     /**
      * Set the config settings
      *
-     * @param $server_key
+     * @param string|array $server
      * @return bool
      */
-    public function setConfig($server_key)
+    public function setConfig($server)
     {
-        $server = $this->fetchConfig($server_key);
-        if(!$server) return false;
+        if (empty($server)) {
+            return false;
+        }
+        if (is_string($server)) {
+            $server = $this->fetchConfig($server);
+        }
         $this->username = $server['username'];
         $this->password = $server['auth'];
         $this->hostName = $server['host'];
         $this->authType = !empty($server['auth_type']) ? $server['auth_type'] : 'hash';
-        //$this->authType = $server['auth_type'] ?? 'hash'; // PHP 7+
         return true;
     }
 
@@ -83,7 +93,7 @@ class CpanelWhm extends Cpanel
      * @param $server_key
      * @return bool|mixed
      */
-    public function fetchConfig($server_key)
+    public static function fetchConfig($server_key)
     {
         $servers = config('cpanel-whm.servers');
         if($server_key) {
